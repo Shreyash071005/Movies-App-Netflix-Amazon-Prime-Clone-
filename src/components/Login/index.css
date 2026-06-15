@@ -12,6 +12,7 @@
 
 .movies-logo {
   width: 100px;
+  height: 27px;
 }
 
 .login-details-container {
@@ -129,5 +130,9 @@
   }
   .sign-in-btn {
     margin: 25px 0;
+  }
+  .movies-logo {
+    width: 180px;
+    height: 52px;
   }
 }
