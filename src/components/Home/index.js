@@ -7,6 +7,7 @@ import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import {Link} from 'react-router-dom'
 import Header from '../Header'
+import Footer from '../Footer'
 import './index.css'
 
 const apiStatusConstants = {
@@ -148,62 +149,128 @@ class Home extends Component {
   renderHeroSection = () => {
     const {originalsMoviesList, originalsApiStatus} = this.state
 
+    let content
+    let heroSectionStyle = {}
+
     switch (originalsApiStatus) {
       case apiStatusConstants.inProgress:
-        return (
-          <div className="loader-container">
-            <Header />
+        content = (
+          <div className="section-loader-container">
             {this.renderLoader('hero-loader-container')}
           </div>
         )
+        break
 
       case apiStatusConstants.failure:
-        return (
-          <>
-            <Header />
-            <div className="section-failure-container">
-              {this.renderFailureView(
-                this.fetchOriginalsMovies,
-                'try-again-hero-btn',
-                'error-hero-text',
-                'alert-hero-icon',
-              )}
-            </div>
-          </>
-        )
-
-      case apiStatusConstants.success: {
-        const index = Math.floor(Math.random() * originalsMoviesList.length)
-
-        return (
-          <div
-            className="hero-section"
-            style={{
-              backgroundImage: `url(${originalsMoviesList[index].backdropPath})`,
-            }}
-          >
-            <Header />
-            <div className="hero-content">
-              <h1 className="hero-section-movie-title">
-                {originalsMoviesList[index].title}
-              </h1>
-
-              <p className="hero-section-movie-overview">
-                {originalsMoviesList[index].overview}
-              </p>
-
-              <button type="button" className="play-btn">
-                Play
-              </button>
-            </div>
+        content = (
+          <div className="section-failure-container">
+            {this.renderFailureView(
+              this.fetchOriginalsMovies,
+              'try-again-hero-btn',
+              'error-hero-text',
+              'alert-hero-icon',
+            )}
           </div>
         )
+        break
+
+      case apiStatusConstants.success: {
+        const randomIndex = Math.floor(
+          Math.random() * originalsMoviesList.length,
+        )
+
+        const selectedMovie = originalsMoviesList[randomIndex]
+
+        heroSectionStyle = {
+          backgroundImage: `url(${selectedMovie.backdropPath})`,
+        }
+
+        content = (
+          <div className="hero-content">
+            <h1 className="hero-section-movie-title">{selectedMovie.title}</h1>
+
+            <p className="hero-section-movie-overview">
+              {selectedMovie.overview}
+            </p>
+
+            <button type="button" className="play-btn">
+              Play
+            </button>
+          </div>
+        )
+        break
       }
 
       default:
-        return null
+        content = null
     }
+
+    return (
+      <div className="hero-section" style={heroSectionStyle}>
+        <Header />
+        {content}
+      </div>
+    )
   }
+  // renderHeroSection = () => {
+  //   const {originalsMoviesList, originalsApiStatus} = this.state
+
+  //   switch (originalsApiStatus) {
+  //     case apiStatusConstants.inProgress:
+  //       return (
+  //         <div className="loader-container">
+  //           <Header />
+  //           {this.renderLoader('hero-loader-container')}
+  //         </div>
+  //       )
+
+  //     case apiStatusConstants.failure:
+  //       return (
+  //         <>
+  //           <Header />
+  //           <div className="section-failure-container">
+  //             {this.renderFailureView(
+  //               this.fetchOriginalsMovies,
+  //               'try-again-hero-btn',
+  //               'error-hero-text',
+  //               'alert-hero-icon',
+  //             )}
+  //           </div>
+  //         </>
+  //       )
+
+  //     case apiStatusConstants.success: {
+  //       const index = Math.floor(Math.random() * originalsMoviesList.length)
+
+  //       return (
+  //         <div
+  //           className="hero-section"
+  //           style={{
+  //             backgroundImage: `url(${originalsMoviesList[index].backdropPath})`,
+  //           }}
+  //         >
+  //           <Header />
+  //           <div className="hero-content">
+  //             <h1 className="hero-section-movie-title">
+  //               {originalsMoviesList[index].title}
+  //             </h1>
+
+  //             <p className="hero-section-movie-overview">
+  //               {originalsMoviesList[index].overview}
+  //             </p>
+
+  //             <button type="button" className="play-btn">
+  //               Play
+  //             </button>
+  //           </div>
+  //         </div>
+  //       )
+  //     }
+
+  //     default:
+  //       return null
+  //   }
+  // }
 
   // Render Trending Movies
   renderTrendingNowMovies = () => {
@@ -275,6 +342,7 @@ class Home extends Component {
     )
   }
 
+  // Render Originals Movies
   renderOriginalsMovies = () => {
     const {originalsMoviesList, originalsApiStatus} = this.state
 
@@ -344,12 +412,14 @@ class Home extends Component {
     )
   }
 
+  // Render Loader
   renderLoader = loaderClassName => (
     <div className={loaderClassName} data-testid="loader">
       <Loader type="TailSpin" color="#D81F26" height={50} width={50} />
     </div>
   )
 
+  // Render Method
   render() {
     const {isLoading} = this.state
 
@@ -368,6 +438,7 @@ class Home extends Component {
               {this.renderOriginalsMovies()}
             </>
           )}
+          <Footer />
         </div>
       </div>
     )

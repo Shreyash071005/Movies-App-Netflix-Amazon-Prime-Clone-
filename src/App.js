@@ -2,7 +2,7 @@ import './App.css'
 import {Switch, Route} from 'react-router-dom'
 import Home from './components/Home'
 import Login from './components/Login'
-import MovieDetails from './components/MovieDetails'
+import Movies from './components/Movies'
 import ProtectedRoute from './components/ProtectedRoute'
 
 const App = () => (
@@ -10,7 +10,7 @@ const App = () => (
     <Switch>
       <ProtectedRoute exact path="/" component={Home} />
       <Route path="/login" component={Login} />
-      <ProtectedRoute exact path="/movies/:id" component={MovieDetails} />
+      <ProtectedRoute exact path="/movies/:id" component={Movies} />
     </Switch>
   </div>
 )

@@ -1,0 +1,38 @@
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+  flex: 1;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 20px;
+  min-width: 111px;
+}
+
+.icons {
+  width: 18px;
+  height: 21px;
+  color: #ffffff;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 100%;
+  letter-spacing: 0px;
+  text-align: center;
+}
+
+.contact-us-text {
+  font-family: HK Grotesk;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0px;
+  color: #ffffff;
+  margin: 0;
+  margin-top: 3px;
+}

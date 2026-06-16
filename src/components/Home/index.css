@@ -4,10 +4,17 @@
   min-height: 100vh;
   max-height: 100%;
   background-color: #131313;
-  padding-bottom: 25px;
 }
 
 /* Loader */
+
+.section-loader-container {
+  flex: 1;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 .loader-container {
   display: flex;
@@ -49,26 +56,23 @@
 /* Hero Section */
 
 .hero-section {
-  min-height: 447px;
+  max-height: 447px;
   position: relative;
-
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
 
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+
+  background-color: #131313;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .hero-section::before {
   content: '';
 
   position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  inset: 0;
 
   background: linear-gradient(
     180deg,
@@ -83,7 +87,10 @@
 .hero-content {
   position: relative;
   z-index: 1;
-  padding: 25px;
+
+  margin-top: auto;
+
+  padding: 24px;
 }
 
 .hero-section-movie-title {
@@ -236,7 +243,7 @@
   font-size: 16px;
   font-weight: 600;
 
-  padding: 0 25px;
+  /* padding: 0 25px; */
 }
 
 .trending-content-container {
@@ -276,14 +283,12 @@
   }
 
   .hero-content {
-    max-width: 500px;
-    margin-left: 25px;
-    margin-bottom: 25px;
+    max-width: 630px;
+    padding: 48px;
   }
 
   .hero-section-movie-title {
     font-size: 64px;
-    line-height: 62px;
   }
 
   .hero-section-movie-overview {
