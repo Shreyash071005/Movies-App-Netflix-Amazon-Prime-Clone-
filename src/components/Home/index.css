@@ -1,0 +1,392 @@
+/* Home Container */
+
+.home-container {
+  min-height: 100vh;
+  max-height: 100%;
+  background-color: #131313;
+  padding-bottom: 25px;
+}
+
+/* Loader */
+
+.loader-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+.trending-now-loader-container {
+  width: 90%;
+  height: 90px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #0d0d0d;
+  border-radius: 4px;
+}
+
+.hero-loader-container {
+  width: 90%;
+  height: 213px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #0d0d0d;
+  border-radius: 4px;
+}
+
+.movies-loader-container {
+  height: 75vh;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Hero Section */
+
+.hero-section {
+  min-height: 447px;
+  position: relative;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.hero-section::before {
+  content: '';
+
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.2) 0%,
+    rgba(19, 19, 19, 0.8) 80%,
+    #131313 100%
+  );
+}
+
+/* Hero Content */
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  padding: 25px;
+}
+
+.hero-section-movie-title {
+  color: #ffffff;
+  font-family: 'HK Grotesk';
+  font-size: 36px;
+  font-weight: 600;
+}
+
+.hero-section-movie-overview {
+  color: #ffffff;
+  font-family: 'HK Grotesk';
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* Play Button */
+
+.play-btn {
+  width: 76px;
+  height: 32px;
+
+  border: none;
+  outline: none;
+  border-radius: 4px;
+
+  background-color: #ffffff;
+  cursor: pointer;
+}
+
+/* Failure View */
+
+.section-failure-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  font-family: 'HK Grotesk';
+  font-size: 12px;
+  font-weight: 500;
+
+  height: 213px;
+}
+
+.movies-failure-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  height: 90px;
+}
+
+.failure-container {
+  width: 90%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #0d0d0d;
+  border-radius: 4px;
+  color: #ffffff;
+}
+
+.alert-hero-icon {
+  color: #d81f26;
+  width: 24px;
+  height: 24px;
+}
+
+.alert-movies-icon {
+  color: #d81f26;
+  width: 16px;
+  height: 16px;
+}
+
+.error-hero-text {
+  font-family: HK Grotesk;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 100%;
+  letter-spacing: 0%;
+}
+
+.error-movies-text {
+  font-family: HK Grotesk;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 100%;
+  letter-spacing: 0%;
+}
+
+.try-again-hero-btn {
+  cursor: pointer;
+  outline: none;
+  border: none;
+
+  width: 77px;
+  height: 28px;
+  opacity: 1;
+  border-radius: 4px;
+  gap: 8px;
+  padding-top: 2px;
+  padding-right: 12px;
+  padding-bottom: 2px;
+  padding-left: 12px;
+
+  font-family: HK Grotesk;
+  font-weight: 600;
+  font-style: SemiBold;
+  font-size: 12px;
+  line-height: 24px;
+  letter-spacing: 0%;
+}
+
+.try-again-movies-btn {
+  cursor: pointer;
+  outline: none;
+  border: none;
+
+  width: 69px;
+  height: 24px;
+  opacity: 1;
+  border-radius: 4px;
+  gap: 8px;
+  padding-top: 4px;
+  padding-right: 12px;
+  padding-bottom: 4px;
+  padding-left: 12px;
+
+  font-family: HK Grotesk;
+  font-weight: 600;
+  font-style: SemiBold;
+  font-size: 10px;
+  line-height: 16px;
+  letter-spacing: 0%;
+}
+
+/* Trending Movies Section */
+
+.trainding-now-movies-heading {
+  color: #ffffff;
+  font-family: 'HK Grotesk';
+  font-size: 16px;
+  font-weight: 600;
+
+  padding: 0 25px;
+}
+
+.trending-content-container {
+  width: 100%;
+}
+
+.success-trending-conten-container {
+  padding: 0 25px;
+}
+
+.trainding-movie-card {
+  padding: 0 6px;
+}
+
+.trainding-movie-card-img {
+  width: 100%;
+  height: 64px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.slick-prev {
+  left: -25px;
+  z-index: 1;
+}
+
+.slick-next {
+  right: -25px;
+  z-index: 1;
+}
+
+/* Desktop View */
+
+@media screen and (min-width: 768px) {
+  .hero-section {
+    min-height: 605px;
+  }
+
+  .hero-content {
+    max-width: 500px;
+    margin-left: 25px;
+    margin-bottom: 25px;
+  }
+
+  .hero-section-movie-title {
+    font-size: 64px;
+    line-height: 62px;
+  }
+
+  .hero-section-movie-overview {
+    font-size: 20px;
+  }
+
+  .sections-loader-container {
+    min-height: 466px;
+  }
+
+  .hero-loader-container {
+    height: 466px;
+  }
+
+  .trending-now-loader-container {
+    height: 170px;
+  }
+
+  .section-failure-container {
+    height: 466px;
+  }
+
+  .try-again-hero-btn {
+    border: none;
+    outline: none;
+    width: 94px;
+    height: 32px;
+    opacity: 1;
+    border-radius: 4px;
+    gap: 8px;
+    padding-top: 4px;
+    padding-right: 16px;
+    padding-bottom: 4px;
+    padding-left: 16px;
+    font-family: HK Grotesk;
+    font-weight: 600;
+    font-style: SemiBold;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: 0%;
+  }
+
+  .error-hero-text {
+    font-family: HK Grotesk;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 100%;
+    letter-spacing: 0%;
+  }
+
+  .alert-hero-icon {
+    width: 48px;
+    height: 48px;
+  }
+
+  .movies-failure-container {
+    height: 170px;
+  }
+
+  .try-again-movies-btn {
+    border: none;
+    outline: none;
+
+    width: 85px;
+    height: 32px;
+    opacity: 1;
+    border-radius: 4px;
+    gap: 8px;
+    padding-top: 4px;
+    padding-right: 16px;
+    padding-bottom: 4px;
+    padding-left: 16px;
+
+    font-family: HK Grotesk;
+    font-weight: 600;
+    font-style: SemiBold;
+    font-size: 12px;
+    line-height: 24px;
+    letter-spacing: 0%;
+  }
+
+  .error-movies-text {
+    font-family: HK Grotesk;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 100%;
+    letter-spacing: 0%;
+  }
+
+  .alert-movies-icon {
+    width: 29px;
+    height: 25px;
+  }
+
+  .trainding-now-movies-heading {
+    font-family: HK Grotesk;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 100%;
+    letter-spacing: 0px;
+  }
+
+  .trainding-movie-card-img {
+    height: 170px;
+  }
+}
