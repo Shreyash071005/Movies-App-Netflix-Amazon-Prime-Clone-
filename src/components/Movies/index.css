@@ -7,7 +7,7 @@
 /* Loading */
 
 .movies-loader-container {
-  height: calc(100vh - 75px);
+  height: calc(100vh - 101px);
 
   display: flex;
   justify-content: center;
@@ -54,11 +54,10 @@
 }
 
 .movie-title {
-  font-size: 36px;
-  margin-bottom: 12px;
   font-family: HK Grotesk;
   font-weight: 600;
   font-style: SemiBold;
+  font-size: 36px;
   line-height: 100%;
   letter-spacing: 0px;
 }
@@ -69,15 +68,22 @@
   gap: 15px;
 }
 
+.duration,
+.certificate,
+.release-year {
+  color: #ffffff;
+
+  font-family: HK Grotesk;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 100%;
+  letter-spacing: 0px;
+}
+
 .certificate {
   border: 1px solid #ffffff;
   border-radius: 2px;
   padding: 2px 8px;
-  color: #ffffff;
-}
-
-.release-year {
-  color: #ffffff;
 }
 
 .movie-overview {
@@ -97,6 +103,78 @@
   border-radius: 4px;
 
   cursor: pointer;
+}
+
+/* Movie Details*/
+
+.movie-details-cards-container {
+  padding: 15px 24px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.movie-details-card-list-container {
+  padding: 0;
+  list-style: none;
+  margin: 5px 0;
+}
+
+.movie-details-cards-label {
+  margin: 0;
+  color: #64748b;
+  font-family: HK Grotesk;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 100%;
+  letter-spacing: 0px;
+}
+
+.movie-details-list,
+.movie-details-value {
+  font-family: HK Grotesk;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  letter-spacing: 0px;
+  color: #ffffff;
+}
+
+.movie-details-value {
+  margin: 5px 0;
+}
+
+/* Similar Movies Suggestion Container */
+.similar-movies-suggestion-container {
+  padding: 15px 24px;
+}
+
+.similar-movies-suggestion-title {
+  font-family: HK Grotesk;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 100%;
+  letter-spacing: 0px;
+  color: #ffffff;
+
+  margin-top: 0;
+}
+
+.similar-movie-list-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  gap: 15px;
+}
+
+.similar-movie-img {
+  width: 90px;
+  height: 64px;
+  opacity: 1;
+  border-radius: 8px;
 }
 
 /* Failure */
@@ -121,7 +199,53 @@
     padding: 50px;
   }
 
-  .movie-details-content h1 {
-    font-size: 64px;
+  .movie-details-cards-container,
+  .similar-movies-suggestion-container {
+    padding: 25px 50px;
+  }
+
+  .movie-title {
+    font-size: 48px;
+  }
+
+  .duration,
+  .certificate,
+  .release-year {
+    font-size: 18px;
+  }
+
+  .movie-overview {
+    font-size: 20px;
+  }
+
+  .movie-details-cards-container {
+    justify-content: space-between;
+  }
+
+  .movie-details-cards-label {
+    font-size: 14px;
+    letter-spacing: 0px;
+    line-height: 26px;
+  }
+
+  .movie-details-list,
+  .movie-details-value {
+    color: #ffffff;
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .movie-details-value {
+    margin: 5px 0;
+  }
+
+  .similar-movies-suggestion-title {
+    font-size: 24px;
+  }
+
+  .similar-movie-img {
+    width: 255px;
+    height: 170px;
+    border-radius: 8px;
   }
 }

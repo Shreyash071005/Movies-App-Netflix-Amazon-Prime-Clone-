@@ -40,15 +40,6 @@ const settings = {
   ],
 }
 
-const jwtToken = Cookies.get('jwt_token')
-
-const options = {
-  method: 'GET',
-  headers: {
-    Authorization: `Bearer ${jwtToken}`,
-  },
-}
-
 class Home extends Component {
   // State
   state = {
@@ -57,6 +48,15 @@ class Home extends Component {
     trendingApiStatus: apiStatusConstants.initial,
     originalsApiStatus: apiStatusConstants.initial,
     isLoading: true,
+  }
+
+  jwtToken = Cookies.get('jwt_token')
+
+  options = {
+    method: 'GET',
+    headers: {
+      Authorization: `Bearer ${this.jwtToken}`,
+    },
   }
 
   // Intial Mount
@@ -71,7 +71,7 @@ class Home extends Component {
     })
     const trendingMoviesResponse = await fetch(
       'https://apis.ccbp.in/movies-app/trending-movies',
-      options,
+      this.options,
     )
 
     const dataTrendingMoviesResponse = await trendingMoviesResponse.json()
@@ -101,7 +101,7 @@ class Home extends Component {
     })
     const originalsResponse = await fetch(
       'https://apis.ccbp.in/movies-app/originals',
-      options,
+      this.options,
     )
 
     const dataOriginalsMoviesList = await originalsResponse.json()
@@ -128,8 +128,10 @@ class Home extends Component {
   fetchMoviesData = async () => {
     this.setState({isLoading: true})
 
-    await this.fetchTrendingMoviesData()
-    await this.fetchOriginalsMovies()
+    await Promise.all([
+      this.fetchTrendingMoviesData(),
+      this.fetchOriginalsMovies(),
+    ])
 
     this.setState({isLoading: false})
   }
@@ -182,7 +184,7 @@ class Home extends Component {
         const selectedMovie = originalsMoviesList[randomIndex]
 
         heroSectionStyle = {
-          backgroundImage: `url(${selectedMovie.backdropPath})`,
+          backgroundImage: `url(${selectedMovie.posterPath})`,
         }
 
         content = (

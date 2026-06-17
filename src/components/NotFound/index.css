@@ -1,0 +1,97 @@
+.not-found-container {
+  min-height: 100vh;
+
+  background-image: linear-gradient(
+      177.79deg,
+      rgba(67, 104, 235, 0.6) -29.16%,
+      rgba(164, 184, 255, 0) 98.14%
+    ),
+    url('https://res.cloudinary.com/dactn5non/image/upload/v1781675814/93955cfc4c28572ced55c420bbcd234b14c68813_r1zmk0.jpg');
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  padding: 20px;
+}
+
+.not-found-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.not-found-title {
+  color: #ffffff;
+  font-family: HK Grotesk;
+  font-weight: 700;
+  font-size: 37px;
+  line-height: 100%;
+  letter-spacing: 0px;
+  margin-bottom: 0;
+}
+
+.not-found-msg {
+  font-family: HK Grotesk;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: center;
+  color: #ffffff;
+}
+
+.go-to-home-btn {
+  background-color: #ffffff;
+  border: none;
+  outline: none;
+
+  width: 127px;
+  height: 40px;
+  border-radius: 4px;
+  opacity: 1;
+  gap: 8px;
+  padding-top: 8px;
+  padding-right: 24px;
+  padding-bottom: 8px;
+  padding-left: 24px;
+}
+
+@media screen and (min-width: 768px) {
+  .not-found-title {
+    font-family: HK Grotesk;
+    font-weight: 700;
+    font-size: 96px;
+    line-height: 100%;
+    letter-spacing: 0px;
+  }
+
+  .not-found-msg {
+    font-family: HK Grotesk;
+    font-weight: 500;
+    font-size: 24px;
+    leading-trim: NONE;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: center;
+  }
+
+  .go-to-home-btn {
+    width: 127px;
+    height: 48px;
+    border-radius: 4px;
+    opacity: 1;
+    gap: 8px;
+    padding-top: 12px;
+    padding-right: 24px;
+    padding-bottom: 12px;
+    padding-left: 24px;
+  }
+}
