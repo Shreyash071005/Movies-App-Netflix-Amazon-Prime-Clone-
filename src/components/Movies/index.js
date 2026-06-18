@@ -210,7 +210,7 @@ class Movies extends Component {
             <div>
               <h1 className="movie-details-cards-label">Release Date</h1>
               <p className="movie-details-value">
-                {format(new Date(moviesDetialsList.releaseDate), 'dd MMM yyyy')}
+                {format(new Date(moviesDetialsList.releaseDate), 'do MMM yyyy')}
               </p>
             </div>
           </div>
