@@ -1,9 +1,7 @@
 .header {
   width: 100%;
   height: 75px;
-
   padding: 24px 25px;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -157,16 +155,6 @@
   position: relative;
 }
 
-/* Hide hamburger on desktop */
-@media (min-width: 768px) {
-  .mobile-menu-icon {
-    display: none;
-  }
-  .desktop-nav {
-    display: flex;
-  }
-}
-
 /* Hide desktop nav on mobile */
 @media (max-width: 767px) {
   .desktop-nav {
@@ -218,5 +206,12 @@
 
   .desktop-profile-icon {
     display: inline;
+  }
+
+  .mobile-menu-icon {
+    display: none;
+  }
+  .desktop-nav {
+    display: flex;
   }
 }

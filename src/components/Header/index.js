@@ -6,7 +6,6 @@ import './index.css'
 const Header = props => {
   const {match} = props
   const [menuOpen, setMenuOpen] = useState(false)
-
   const close = () => setMenuOpen(false)
 
   return (
@@ -88,7 +87,6 @@ const Header = props => {
         </li>
       </ul>
 
-      {/* Mobile nav drawer */}
       {menuOpen && (
         <div className="mobile-nav-drawer">
           <ul className="mobile-nav-links">
