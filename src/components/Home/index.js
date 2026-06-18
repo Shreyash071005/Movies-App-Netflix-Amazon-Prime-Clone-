@@ -47,7 +47,6 @@ class Home extends Component {
     originalsMoviesList: [],
     trendingApiStatus: apiStatusConstants.initial,
     originalsApiStatus: apiStatusConstants.initial,
-    isLoading: true,
   }
 
   jwtToken = Cookies.get('jwt_token')
@@ -77,16 +76,18 @@ class Home extends Component {
     const dataTrendingMoviesResponse = await trendingMoviesResponse.json()
 
     if (trendingMoviesResponse.ok === true) {
-      const formatedData = dataTrendingMoviesResponse.results.map(eachData => ({
-        id: eachData.id,
-        title: eachData.title,
-        posterPath: eachData.poster_path,
-        backdropPath: eachData.backdrop_path,
-        overview: eachData.overview,
-      }))
+      const formattedData = dataTrendingMoviesResponse.results.map(
+        eachData => ({
+          id: eachData.id,
+          title: eachData.title,
+          posterPath: eachData.poster_path,
+          backdropPath: eachData.backdrop_path,
+          overview: eachData.overview,
+        }),
+      )
 
       this.setState({
-        trendingMoviesList: formatedData,
+        trendingMoviesList: formattedData,
         trendingApiStatus: apiStatusConstants.success,
       })
     } else {
@@ -107,7 +108,7 @@ class Home extends Component {
     const dataOriginalsMoviesList = await originalsResponse.json()
 
     if (originalsResponse.ok === true) {
-      const formatedData = dataOriginalsMoviesList.results.map(eachData => ({
+      const formattedData = dataOriginalsMoviesList.results.map(eachData => ({
         id: eachData.id,
         title: eachData.title,
         posterPath: eachData.poster_path,
@@ -116,7 +117,7 @@ class Home extends Component {
       }))
 
       this.setState({
-        originalsMoviesList: formatedData,
+        originalsMoviesList: formattedData,
         originalsApiStatus: apiStatusConstants.success,
       })
     } else {
@@ -124,16 +125,12 @@ class Home extends Component {
     }
   }
 
-  // Inital Call for Trending Movies Data and Originals Movies Data
+  // Initial Call for Trending Movies Data and Originals Movies Data
   fetchMoviesData = async () => {
-    this.setState({isLoading: true})
-
     await Promise.all([
       this.fetchTrendingMoviesData(),
       this.fetchOriginalsMovies(),
     ])
-
-    this.setState({isLoading: false})
   }
 
   // Render Failure View
@@ -141,13 +138,17 @@ class Home extends Component {
     <div className="failure-container">
       <RiAlertFill className={alertIconCSS} />
       <p className={errorTextCSS}>Something went wrong. Please try again</p>
-      <button type="button" className={btnCSS} onClick={retry}>
+      <button
+        type="button"
+        className={`try-again-btn ${btnCSS}`}
+        onClick={retry}
+      >
         Try Again
       </button>
     </div>
   )
 
-  // Rnder Hero Section
+  // Render Hero Section
   renderHeroSection = () => {
     const {originalsMoviesList, originalsApiStatus} = this.state
 
@@ -247,7 +248,7 @@ class Home extends Component {
         break
 
       case apiStatusConstants.success:
-        contentCss = 'success-trending-conten-container'
+        contentCss = 'success-trending-content-container'
         content = (
           <Slider {...settings}>
             {trendingMoviesList.map(eachMovie => {
@@ -256,11 +257,11 @@ class Home extends Component {
               return (
                 <div key={id}>
                   <Link to={`/movies/${id}`}>
-                    <div className="trainding-movie-card">
+                    <div className="trending-movie-card">
                       <img
                         src={posterPath}
                         alt={title}
-                        className="trainding-movie-card-img"
+                        className="trending-movie-card-img"
                       />
                     </div>
                   </Link>
@@ -275,10 +276,18 @@ class Home extends Component {
         content = null
     }
 
+    const loadingAndFailurePadding =
+      trendingApiStatus !== apiStatusConstants.success
+        ? 'trending-now-movies-heading-loading-failure-padding'
+        : null
     return (
-      <div className="trainding-now-movies-container">
+      <div className="trending-now-movies-container">
         <div className={contentCss}>
-          <h1 className="trainding-now-movies-heading">Trending Now</h1>
+          <h1
+            className={`trending-now-movies-heading ${loadingAndFailurePadding}`}
+          >
+            Trending Now
+          </h1>
           {content}
         </div>
       </div>
@@ -317,7 +326,7 @@ class Home extends Component {
         break
 
       case apiStatusConstants.success:
-        contentCss = 'success-trending-conten-container'
+        contentCss = 'success-trending-content-container'
         content = (
           <Slider {...settings}>
             {originalsMoviesList.map(eachMovie => {
@@ -326,11 +335,11 @@ class Home extends Component {
               return (
                 <div key={id}>
                   <Link to={`/movies/${id}`}>
-                    <div className="trainding-movie-card">
+                    <div className="trending-movie-card">
                       <img
                         src={posterPath}
                         alt={title}
-                        className="trainding-movie-card-img"
+                        className="trending-movie-card-img"
                       />
                     </div>
                   </Link>
@@ -345,10 +354,19 @@ class Home extends Component {
         content = null
     }
 
+    const loadingAndFailurePadding =
+      originalsApiStatus !== apiStatusConstants.success
+        ? 'trending-now-movies-heading-loading-failure-padding'
+        : null
+
     return (
-      <div className="trainding-now-movies-container">
+      <div className="trending-now-movies-container">
         <div className={contentCss}>
-          <h1 className="trainding-now-movies-heading">Originals</h1>
+          <h1
+            className={`trending-now-movies-heading ${loadingAndFailurePadding}`}
+          >
+            Originals
+          </h1>
           {content}
         </div>
       </div>
@@ -364,23 +382,12 @@ class Home extends Component {
 
   // Render Method
   render() {
-    const {isLoading} = this.state
-
     return (
       <div className="home-container">
         <div className="home-content">
-          {isLoading ? (
-            <>
-              <Header />
-              {this.renderLoader('movies-loader-container')}
-            </>
-          ) : (
-            <>
-              {this.renderHeroSection()}
-              {this.renderTrendingNowMovies()}
-              {this.renderOriginalsMovies()}
-            </>
-          )}
+          {this.renderHeroSection()}
+          {this.renderTrendingNowMovies()}
+          {this.renderOriginalsMovies()}
           <Footer />
         </div>
       </div>
