@@ -91,6 +91,92 @@
   display: none;
 }
 
+/* Hamburger button wrapper */
+.hamburger-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+/* Mobile drawer — full-width row below the header bar */
+.mobile-nav-drawer {
+  position: absolute;
+  top: 60px; /* matches header height */
+  left: 0;
+  right: 0;
+  background-color: #0f0f0f;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  z-index: 100;
+}
+
+.mobile-nav-links {
+  list-style: none;
+  display: flex;
+  gap: 28px;
+  margin: 0;
+  padding: 0;
+}
+
+.mobile-nav-link {
+  color: #ffffff;
+  text-decoration: none;
+
+  font-family: HK Grotesk;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 26px;
+  letter-spacing: -0.36px;
+}
+
+.mobile-nav-link:hover {
+  color: #cccccc;
+}
+
+/* Close (✕) button */
+.close-menu-btn {
+  background-color: #ffffff;
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #000000;
+  flex-shrink: 0;
+}
+
+/* Make header position relative so drawer positions correctly */
+.header {
+  position: relative;
+}
+
+/* Hide hamburger on desktop */
+@media (min-width: 768px) {
+  .mobile-menu-icon {
+    display: none;
+  }
+  .desktop-nav {
+    display: flex;
+  }
+}
+
+/* Hide desktop nav on mobile */
+@media (max-width: 767px) {
+  .desktop-nav {
+    display: none;
+  }
+  .desktop-profile-icon {
+    display: none;
+  }
+}
+
 @media screen and (min-width: 768px) {
   .header {
     height: 103px;

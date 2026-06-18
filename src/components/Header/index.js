@@ -1,9 +1,14 @@
+import {useState} from 'react'
 import {Link, withRouter} from 'react-router-dom'
-import {HiOutlineSearch} from 'react-icons/hi'
+import {HiOutlineSearch, HiX} from 'react-icons/hi'
 import './index.css'
 
 const Header = props => {
   const {match} = props
+  const [menuOpen, setMenuOpen] = useState(false)
+
+  const close = () => setMenuOpen(false)
+
   return (
     <header className="header">
       <div className="header-left">
@@ -15,7 +20,8 @@ const Header = props => {
           />
         </Link>
 
-        <nav>
+        {/* Desktop nav */}
+        <nav className="desktop-nav">
           <ul className="nav-links">
             <li>
               <Link
@@ -27,7 +33,6 @@ const Header = props => {
                 Home
               </Link>
             </li>
-
             <li>
               <Link
                 to="/popular"
@@ -57,13 +62,22 @@ const Header = props => {
           </Link>
         </li>
 
+        {/* Hamburger icon — mobile only */}
         <li className="mobile-menu-icon">
-          <img
-            src="https://res.cloudinary.com/dactn5non/image/upload/v1781536004/add-to-queue_1_bztuwp.png"
-            alt="menu"
-          />
+          <button
+            type="button"
+            className="hamburger-btn"
+            onClick={() => setMenuOpen(true)}
+            aria-label="Open menu"
+          >
+            <img
+              src="https://res.cloudinary.com/dactn5non/image/upload/v1781536004/add-to-queue_1_bztuwp.png"
+              alt="menu"
+            />
+          </button>
         </li>
 
+        {/* Profile icon — desktop only */}
         <li className="desktop-profile-icon">
           <Link to="/account">
             <img
@@ -73,6 +87,38 @@ const Header = props => {
           </Link>
         </li>
       </ul>
+
+      {/* Mobile nav drawer */}
+      {menuOpen && (
+        <div className="mobile-nav-drawer">
+          <ul className="mobile-nav-links">
+            <li>
+              <Link to="/" className="mobile-nav-link" onClick={close}>
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link to="/popular" className="mobile-nav-link" onClick={close}>
+                Popular
+              </Link>
+            </li>
+            <li>
+              <Link to="/account" className="mobile-nav-link" onClick={close}>
+                Account
+              </Link>
+            </li>
+          </ul>
+
+          <button
+            type="button"
+            className="close-menu-btn"
+            onClick={close}
+            aria-label="Close menu"
+          >
+            <HiX size={28} />
+          </button>
+        </div>
+      )}
     </header>
   )
 }

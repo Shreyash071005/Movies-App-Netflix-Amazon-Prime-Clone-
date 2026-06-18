@@ -1,7 +1,7 @@
 import {Component} from 'react'
 import Cookies from 'js-cookie'
 import Loader from 'react-loader-spinner'
-import {getYear, toDate, format} from 'date-fns'
+import {getYear, format} from 'date-fns'
 import Header from '../Header'
 import Footer from '../Footer'
 import './index.css'

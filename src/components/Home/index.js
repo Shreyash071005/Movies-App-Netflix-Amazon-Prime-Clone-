@@ -44,6 +44,7 @@ class Home extends Component {
   state = {
     trendingMoviesList: [],
     originalsMoviesList: [],
+    selectedMovie: [],
     trendingApiStatus: apiStatusConstants.initial,
     originalsApiStatus: apiStatusConstants.initial,
   }
@@ -115,9 +116,14 @@ class Home extends Component {
         overview: eachData.overview,
       }))
 
+      const randomIndex = Math.floor(Math.random() * formattedData.length)
+
+      const selectedMovie = formattedData[randomIndex]
+
       this.setState({
         originalsMoviesList: formattedData,
         originalsApiStatus: apiStatusConstants.success,
+        selectedMovie,
       })
     } else {
       this.setState({originalsApiStatus: apiStatusConstants.failure})
@@ -153,7 +159,7 @@ class Home extends Component {
 
   // Render Hero Section
   renderHeroSection = () => {
-    const {originalsMoviesList, originalsApiStatus} = this.state
+    const {selectedMovie, originalsApiStatus} = this.state
 
     let content
     let heroSectionStyle = {}
@@ -181,12 +187,6 @@ class Home extends Component {
         break
 
       case apiStatusConstants.success: {
-        const randomIndex = Math.floor(
-          Math.random() * originalsMoviesList.length,
-        )
-
-        const selectedMovie = originalsMoviesList[randomIndex]
-
         heroSectionStyle = {
           backgroundImage: `url(${selectedMovie.backdropPath})`,
         }
