@@ -109,9 +109,20 @@ class Movies extends Component {
       <Header />
 
       <div className="failure-view-container">
-        <h1>Something Went Wrong</h1>
+        <img
+          src="https://res.cloudinary.com/dactn5non/image/upload/v1781675769/Something_went_Wrong_ukucio.png"
+          alt="failure view"
+          className="failure-view-img"
+        />
+        <p className="failure-view-movies-msg">
+          Something went wrong. Please try again
+        </p>
 
-        <button type="button" onClick={this.fetchMovieItemDetailsAPI}>
+        <button
+          type="button"
+          className="failure-view-try-again-btn-movies"
+          onClick={this.fetchMovieItemDetailsAPI}
+        >
           Try Again
         </button>
       </div>
@@ -156,8 +167,8 @@ class Movies extends Component {
             <h1 className="movie-details-cards-label">Genres</h1>
             <ul className="movie-details-card-list-container">
               {moviesDetialsList.genres.map(eachItem => (
-                <li key={eachItem.id} className="movie-details-list">
-                  {eachItem.name}
+                <li key={eachItem.id}>
+                  <p className="movie-details-list">{eachItem.name}</p>
                 </li>
               ))}
             </ul>
@@ -167,8 +178,8 @@ class Movies extends Component {
             <h1 className="movie-details-cards-label">Audio Available</h1>
             <ul className="movie-details-card-list-container">
               {moviesDetialsList.spokenLanguages.map(eachItem => (
-                <li key={eachItem.id} className="movie-details-list">
-                  {eachItem.englishName}
+                <li key={eachItem.id}>
+                  <p className="movie-details-list">{eachItem.englishName}</p>
                 </li>
               ))}
             </ul>
@@ -193,9 +204,7 @@ class Movies extends Component {
           <div className="movie-details-card">
             <div>
               <h1 className="movie-details-cards-label">Budget</h1>
-              <h1 className="movie-details-value">
-                {moviesDetialsList.budget}
-              </h1>
+              <p className="movie-details-value">{moviesDetialsList.budget}</p>
             </div>
 
             <div>

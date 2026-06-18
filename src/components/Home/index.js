@@ -184,7 +184,7 @@ class Home extends Component {
         const selectedMovie = originalsMoviesList[randomIndex]
 
         heroSectionStyle = {
-          backgroundImage: `url(${selectedMovie.posterPath})`,
+          backgroundImage: `url(${selectedMovie.backdropPath})`,
         }
 
         content = (
@@ -214,65 +214,6 @@ class Home extends Component {
       </div>
     )
   }
-  // renderHeroSection = () => {
-  //   const {originalsMoviesList, originalsApiStatus} = this.state
-
-  //   switch (originalsApiStatus) {
-  //     case apiStatusConstants.inProgress:
-  //       return (
-  //         <div className="loader-container">
-  //           <Header />
-  //           {this.renderLoader('hero-loader-container')}
-  //         </div>
-  //       )
-
-  //     case apiStatusConstants.failure:
-  //       return (
-  //         <>
-  //           <Header />
-  //           <div className="section-failure-container">
-  //             {this.renderFailureView(
-  //               this.fetchOriginalsMovies,
-  //               'try-again-hero-btn',
-  //               'error-hero-text',
-  //               'alert-hero-icon',
-  //             )}
-  //           </div>
-  //         </>
-  //       )
-
-  //     case apiStatusConstants.success: {
-  //       const index = Math.floor(Math.random() * originalsMoviesList.length)
-
-  //       return (
-  //         <div
-  //           className="hero-section"
-  //           style={{
-  //             backgroundImage: `url(${originalsMoviesList[index].backdropPath})`,
-  //           }}
-  //         >
-  //           <Header />
-  //           <div className="hero-content">
-  //             <h1 className="hero-section-movie-title">
-  //               {originalsMoviesList[index].title}
-  //             </h1>
-
-  //             <p className="hero-section-movie-overview">
-  //               {originalsMoviesList[index].overview}
-  //             </p>
-
-  //             <button type="button" className="play-btn">
-  //               Play
-  //             </button>
-  //           </div>
-  //         </div>
-  //       )
-  //     }
-
-  //     default:
-  //       return null
-  //   }
-  // }
 
   // Render Trending Movies
   renderTrendingNowMovies = () => {
