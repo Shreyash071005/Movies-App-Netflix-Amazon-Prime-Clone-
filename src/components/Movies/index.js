@@ -154,7 +154,7 @@ class Movies extends Component {
               </p>
 
               <p className="release-year">
-                {getYear(toDate(new Date(moviesDetialsList.releaseDate)))}
+                {getYear(new Date(moviesDetialsList.releaseDate))}
               </p>
             </div>
             <p className="movie-overview">{moviesDetialsList.overview}</p>
@@ -210,7 +210,13 @@ class Movies extends Component {
             <div>
               <h1 className="movie-details-cards-label">Release Date</h1>
               <p className="movie-details-value">
-                {format(new Date(moviesDetialsList.releaseDate), 'do MMM yyyy')}
+                {
+                  // moviesDetialsList.releaseDate
+                  format(
+                    new Date(moviesDetialsList.releaseDate),
+                    'do MMMM yyyy',
+                  )
+                }
               </p>
             </div>
           </div>

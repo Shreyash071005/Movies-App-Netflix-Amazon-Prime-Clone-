@@ -20,7 +20,8 @@ class Search extends Component {
     searchValue: '',
   }
 
-  fetchSearchMovies = async searchText => {
+  fetchSearchMovies = async () => {
+    const {searchValue} = this.state
     this.setState({
       apiStatus: apiStatusConstants.inProgress,
     })
@@ -35,7 +36,7 @@ class Search extends Component {
     }
 
     const response = await fetch(
-      `https://apis.ccbp.in/movies-app/movies-search?search=${searchText}`,
+      `https://apis.ccbp.in/movies-app/movies-search?search=${searchValue}`,
       options,
     )
 
@@ -67,8 +68,7 @@ class Search extends Component {
 
   // Call Search Api
   onClickSearchBtn = () => {
-    const {searchValue} = this.state
-    this.fetchSearchMovies(searchValue)
+    this.fetchSearchMovies()
   }
 
   renderLoaderView = () => (
@@ -101,18 +101,18 @@ class Search extends Component {
     </>
   )
 
-  renderSuccessView = userSearchInput => {
-    const {searchMoviesList} = this.state
+  renderSuccessView = () => {
+    const {searchMoviesList, searchValue} = this.state
 
     if (searchMoviesList.length === 0) {
       return (
         <div className="movie-not-found-container">
           <img
             src="https://res.cloudinary.com/dactn5non/image/upload/v1781781438/Group_7394_rzjv2e.png"
-            alt="failure view"
+            alt="no movies"
             className="movie-not-found-img"
           />
-          <p className="movie-not-found-text">{`Your search for ${userSearchInput} did not find any matches.`}</p>
+          <p className="movie-not-found-text">{`Your search for ${searchValue} did not find any matches.`}</p>
         </div>
       )
     }
@@ -134,7 +134,7 @@ class Search extends Component {
     )
   }
 
-  renderSearchContainer = userSearchInput => {
+  renderSearchContainer = () => {
     const {apiStatus} = this.state
     switch (apiStatus) {
       case apiStatusConstants.failure:
@@ -142,7 +142,7 @@ class Search extends Component {
       case apiStatusConstants.inProgress:
         return this.renderLoaderView()
       case apiStatusConstants.success:
-        return this.renderSuccessView(userSearchInput)
+        return this.renderSuccessView()
       default:
         return null
     }
@@ -209,6 +209,7 @@ class Search extends Component {
                   type="button"
                   className="search-btn"
                   onClick={this.onClickSearchBtn}
+                  data-testid="searchButton"
                 >
                   <HiOutlineSearch size={24} />
                 </button>

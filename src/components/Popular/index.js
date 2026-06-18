@@ -90,18 +90,17 @@ class Popular extends Component {
       <>
         <ul className="popular-movies-list-container">
           {popularMoviesList.map(eachMovie => (
-            <Link to={`/movies/${eachMovie.id}`} key={eachMovie.id}>
-              <li className="popular-movies-card-list">
+            <li className="popular-movies-card-list" key={eachMovie.id}>
+              <Link to={`/movies/${eachMovie.id}`}>
                 <img
                   src={eachMovie.posterPath}
                   alt={eachMovie.title}
                   className="popular-movies-card-img"
                 />
-              </li>
-            </Link>
+              </Link>
+            </li>
           ))}
         </ul>
-        <Footer />
       </>
     )
   }
@@ -131,6 +130,7 @@ class Popular extends Component {
         <div className="popular-movies-content-container">
           {this.renderPopularMoviesContainer()}
         </div>
+        <Footer />
       </div>
     )
   }
