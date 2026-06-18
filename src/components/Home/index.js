@@ -1,7 +1,6 @@
 import {Component} from 'react'
 import Cookies from 'js-cookie'
 import Loader from 'react-loader-spinner'
-import {RiAlertFill} from 'react-icons/ri'
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
@@ -136,7 +135,11 @@ class Home extends Component {
   // Render Failure View
   renderFailureView = (retry, btnCSS, errorTextCSS, alertIconCSS) => (
     <div className="failure-container">
-      <RiAlertFill className={alertIconCSS} />
+      <img
+        src="https://res.cloudinary.com/dactn5non/image/upload/v1781784016/alert-triangle_xubffu.png"
+        alt="failure view"
+        className={alertIconCSS}
+      />
       <p className={errorTextCSS}>Something went wrong. Please try again</p>
       <button
         type="button"

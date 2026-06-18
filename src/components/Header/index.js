@@ -4,8 +4,6 @@ import './index.css'
 
 const Header = props => {
   const {match} = props
-  const isSearchPage = match.path === '/search'
-
   return (
     <header className="header">
       <div className="header-left">
@@ -48,17 +46,15 @@ const Header = props => {
 
       <ul className="header-actions">
         <li>
-          {isSearchPage ? (
-            <input
-              type="search"
-              placeholder="Search"
-              className="search-input"
-            />
-          ) : (
-            <Link to="/search" className="search-link">
+          <Link to="/search" className="search-link">
+            <button
+              type="button"
+              className="search-icon-btn"
+              data-testid="searchButton"
+            >
               <HiOutlineSearch size={24} className="search-icon" />
-            </Link>
-          )}
+            </button>
+          </Link>
         </li>
 
         <li className="mobile-menu-icon">

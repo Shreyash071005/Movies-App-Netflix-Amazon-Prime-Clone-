@@ -1,0 +1,120 @@
+.search-container {
+  min-height: 100vh;
+  max-height: 100%;
+  background-color: #131313;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.search-content-container {
+  flex: 1;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 24px 25px;
+}
+
+.loader-container {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Failure View */
+
+.failure-view-container {
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+}
+
+.failure-view-img {
+  width: 232px;
+  height: 172px;
+}
+
+.failure-view-popular-movies-msg {
+  color: #ffffff;
+
+  font-family: 'HK Grotesk';
+  font-size: 16px;
+  font-weight: 500;
+
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+
+.failure-view-try-again-btn-popular-movies {
+  width: 107px;
+  height: 40px;
+
+  border: none;
+  outline: none;
+  border-radius: 4px;
+
+  cursor: pointer;
+
+  font-family: 'HK Grotesk';
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.movie-not-found-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.movie-not-found-img {
+  width: 209px;
+  height: 176px;
+}
+
+.movie-not-found-text {
+  font-family: HK Grotesk;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0%;
+  text-align: center;
+  color: #ffffff;
+}
+
+.success-view-movies-card-content {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 25px;
+  list-style: none;
+  gap: 15px;
+}
+
+.movies-card {
+  width: 80px;
+  height: 100px;
+}
+
+.movie-card-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+}
+
+@media screen and (min-width: 768px) {
+  .movies-card {
+    width: 200px;
+    height: 170px;
+  }
+}

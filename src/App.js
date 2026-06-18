@@ -1,13 +1,13 @@
-import './App.css'
 import {Switch, Route} from 'react-router-dom'
+import './App.css'
 import Home from './components/Home'
 import Login from './components/Login'
 import Movies from './components/Movies'
 import Popular from './components/Popular'
 import Search from './components/Search'
 import Account from './components/Account'
-import ProtectedRoute from './components/ProtectedRoute'
 import NotFound from './components/NotFound'
+import ProtectedRoute from './components/ProtectedRoute'
 
 const App = () => (
   <div className="app-container">
@@ -17,8 +17,8 @@ const App = () => (
       <ProtectedRoute exact path="/movies/:id" component={Movies} />
       <ProtectedRoute exact path="/popular" component={Popular} />
       <ProtectedRoute exact path="/search" component={Search} />
-      <ProtectedRoute eact path="/account" component={Account} />
-      <Route path="/" component={NotFound} />
+      <ProtectedRoute exact path="/account" component={Account} />
+      <Route component={NotFound} />
     </Switch>
   </div>
 )
